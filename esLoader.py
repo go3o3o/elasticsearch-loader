@@ -150,6 +150,9 @@ def _parquet(ctx, filename):
     load(jsons, ctx.obj)
 
 def single_bulk_to_es(bulk, config, attempt_retry):
+    with open('./config/config.json', 'r') as f:
+        configFile = json.load(f)
+    config['encryption_key'] = configFile['DEFAULT']['ENCRYPTION_KEY'] 
     bulk = bulk_builder(bulk, config)
     # log('info', '\n'.join(str(x) for x in bulk))
 

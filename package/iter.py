@@ -20,11 +20,11 @@ def bulk_builder(bulk, config):
 
             if config['keyName']:
                 if config['keyName'] == 'articles':
-                    source = articles(item)
+                    source = articles(item, config)
                 if config['keyName'] == 'comments':
-                    source = comments(item)
+                    source = comments(item, config)
                 if config['keyName'] == 'users':
-                    source = users(item)
+                    source = users(item, config)
 
             body = {'_index': config['index'],
                     '_type': config['type'],

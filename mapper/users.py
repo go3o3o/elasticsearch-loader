@@ -1,7 +1,7 @@
 import hashlib
 from datetime import datetime
 
-def mapper(item):
+def mapper(item, config):
     if 'created_at' in item:
         try:
             ms = item['created_at'] / 1000000
@@ -24,8 +24,8 @@ def mapper(item):
         except Exception as e:
             item['blocked_when'] = item['blocked_when']
 
-    ENCRYPTION_KEY = 'medistreamkingwangjjang'
-    encryptText = ENCRYPTION_KEY + str(item['user_id'])
+    encryption_key = config['encryption_key']
+    encryptText = encryption_key + str(item['user_id'])
     item['md5_id'] = hashlib.md5(encryptText).hexdigest()
     return item
    

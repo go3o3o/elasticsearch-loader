@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def mapper(item):
+def mapper(item, config):
     if item['CREATED_AT']:
         ms = item['CREATED_AT'] / 1000
         timestamp = datetime.fromtimestamp(ms).strftime("%Y-%m-%dT%H:%M:%S")
