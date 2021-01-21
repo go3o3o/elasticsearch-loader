@@ -21,7 +21,7 @@ echo " >>> esHost: $esHost"
 echo " >>> indexName: $articleIndex"
 
 echo "Step #2-1. DELETE INDEX $articleIndex"
-python esLoader.py \ 
+python esLoader.py \
         --es-host $esHost \
         --index $articleIndex \
         --type $articleType \
@@ -59,7 +59,7 @@ echo " >>> esHost: $esHost"
 echo " >>> indexName: $userIndex"
 
 echo "Step #3-1. DELETE INDEX $userIndex"
-python esLoader.py \ 
+python esLoader.py \
         --es-host $esHost \
         --index $userIndex \
         --delete
