@@ -1,3 +1,4 @@
 getS3.sh
 logs/
 config/
+export/
