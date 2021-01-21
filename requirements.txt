@@ -1,0 +1,11 @@
+click
+elasticsearch
+click_stream
+click_conf
+parquet
+ujson
+pandas
+more-itertools
+unicodecsv
+datetime
+pyarrow
