@@ -4,7 +4,7 @@ env=${envParam:="stg"}
 rootPath=`pwd`
 communityPath=export/communitydb
 
-echo 'Step #1. Push to Elasticsearch'
+echo "Step #1. Push to Elasticsearch"
 esHostParam=$2
 esHost=${esHostParam:="http://localhost:9200"}
 articleIndex=community-stg
@@ -37,7 +37,7 @@ python esLoader.py \
         --index $articleIndex \
         --type $articleType \
         --index_settings_file $settingsFilePath \
-        --id_field ID \
+        --id_field article_id \
         parquet $articlesPath
 
 echo "Step #2-2. INSERT $commentsPath"
@@ -45,7 +45,7 @@ python esLoader.py \
         --es-host $esHost \
         --index $articleIndex \
         --type $articleType \
-        --id_field ID \
+        --id_field comment_id \
         --as_child \
         --parent_id_field ARTICLES_ID \
         parquet $commentsPath 
