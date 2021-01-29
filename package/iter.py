@@ -31,10 +31,10 @@ def bulk_builder(bulk, config):
                     '_source': source}
         
             if config['id_field']:
-                if type(item[config['id_field']]) is float:
-                    _id = int(float(item[config['id_field']]))
+                if type(source[config['id_field']]) is float:
+                    _id = int(float(source[config['id_field']]))
                 else:
-                    _id = item[config['id_field']]
+                    _id = source[config['id_field']]
                 body['_id'] = _id
                 body['_routing'] = _id
 
