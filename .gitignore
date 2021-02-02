@@ -1,4 +1,5 @@
 getS3.sh
+pushECR.sh
 logs/
 config/
 export/

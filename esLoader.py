@@ -93,7 +93,9 @@ def _csv(ctx, filename, delimiter):
     log('info', filename)
     csvFile = open(os.path.abspath(filename), 'r')
     # lines = chain(*(csv.DictReader(x, delimiter=str(delimiter)) for x in files))
-    lines = pd.read_csv(csvFile).to_json(orient='records')
+    df = pd.read_csv(csvFile)
+    df.columns = df.columns.str.upper()
+    lines = df.to_json(orient='records')
 
     regex = r'(\w+).csv'
     match = re.search(regex, filename)
