@@ -28,9 +28,8 @@ python esLoader.py \
         --delete
 
 settingsFilePath=config/mappings_community.json
-# articlesPath=$rootPath/$communityPath/articles.parquet
 articlesPath=$rootPath/$communityPath/articles.csv
-commentsPath=$rootPath/$communityPath/comments.parquet
+commentsPath=$rootPath/$communityPath/comments.csv
 
 echo "Step #2-2. INSERT $articlesPath"
 python esLoader.py \
@@ -49,7 +48,7 @@ python esLoader.py \
         --id_field comment_id \
         --as_child \
         --parent_id_field ARTICLES_ID \
-        parquet $commentsPath 
+        csv $commentsPath 
 
 echo "Step #2-3. Finished"
 echo "==================================================================================="
