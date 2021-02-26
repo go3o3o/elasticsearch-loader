@@ -1,6 +1,20 @@
 from datetime import datetime
+import re
+
+def remove_tag(content):
+   regex = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+   
+   cleantext = re.sub(regex, '', content , 0).strip()
+   return cleantext
 
 def mapper(item, config):
+    if 'CONTENT' in item and item['CONTENT']:
+        # content_utf8 = item['CONTENT'].encode('utf-8').strip().rstrip('\n').rstrip('&nbsp').rstrip('&gt;').rstrip('&lt;')
+        content_utf8 = item['CONTENT'].encode('utf-8').strip()
+        content_clean = remove_tag(content_utf8)
+        content = content_clean.decode('utf-8')
+
+        item['CONTENT'] = content
     if 'CREATED_AT' in item:
         try:
             ms = item['CREATED_AT'] / 1000000
