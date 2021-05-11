@@ -22,4 +22,5 @@ COPY . .
 ADD export.sh /usr/src/app/export.sh
 
 ENTRYPOINT ["/bin/bash"]
-CMD ["export.sh", "prd", "172.31.3.157:9200"]
+# CMD ["export.sh", "prd", "172.31.3.157:9200"]
+# CMD ["export.sh", "stg", "172.31.28.43:9200"]
